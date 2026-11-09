@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gouga — A universe made of memories ✨</title>
+<style>
+:root{--pink:#ff4fc8;--gold:#ffe21a;--violet:#20dfff}
+*{box-sizing:border-box}body{margin:0;background:#050509;color:#fff;font-family:Georgia,serif;overflow-x:hidden}
+#gouga-art-bg{position:fixed;z-index:0;pointer-events:none;width:min(92vw,900px);height:min(92vh,900px);object-fit:contain;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.20;mix-blend-mode:screen;filter:saturate(.9)}
+#sky{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 100%,#24102d99 0,transparent 58%),radial-gradient(ellipse at 15% 10%,#082b3699 0,transparent 48%),linear-gradient(135deg,#050509f2,#090817f2)}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 2.4s infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.4)}}
+main{position:relative;z-index:1;min-height:100vh;display:grid;place-items:center;padding:28px 15px}
+.scene{width:min(900px,100%);text-align:center;animation:fade .7s ease}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+.hidden{display:none!important}
+h1{font-size:clamp(2.3rem,8vw,5rem);margin:10px 0;color:#ffe5fa;text-shadow:0 0 25px #e78bd9}
+h2{font-size:clamp(1.7rem,5vw,2.7rem);color:var(--gold);margin:8px}
+p{line-height:1.7;color:#e8ddf8;font-family:Arial,sans-serif}
+.small{letter-spacing:4px;text-transform:uppercase;color:#c7b5ff;font:12px Arial}
+button{border:1px solid #f8c6eb;background:linear-gradient(120deg,#087e91,#a52c83 58%,#b58a00);color:white;padding:14px 24px;border-radius:40px;font-size:15px;cursor:pointer;margin:9px;box-shadow:0 0 22px #c86fba55}
+button.secondary{background:#ffffff12;border-color:#bca9ff}
+.door-wrap{perspective:1200px;width:min(330px,85vw);height:430px;margin:28px auto;position:relative}
+.door{position:absolute;inset:0;border:2px solid #ffe21a;border-radius:12px 12px 5px 5px;background:linear-gradient(145deg,#073b43,#111326 55%,#55204b);box-shadow:0 0 45px #20dfff55,0 0 22px #ff4fc855,inset 0 0 35px #ffe21a22;transform-origin:left;transition:transform 1.2s cubic-bezier(.6,.05,.2,1);display:grid;place-items:center;backface-visibility:hidden}
+.door:before{content:"";position:absolute;inset:12px;border:1px solid #e9c6ff88;border-radius:8px}
+.door.open{transform:rotateY(-108deg)}
+.door-symbol{font-size:62px;text-shadow:0 0 24px #fff}
+.door-knob{position:absolute;right:25px;top:52%;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.door-title{position:absolute;bottom:55px;font-size:21px;color:#ffe9fc}
+.room{border:1px solid #d8b6ff66;border-radius:24px;padding:25px;background:linear-gradient(145deg,#211936dd,#101024ee);box-shadow:0 0 45px #ad77e944}
+.media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.media{min-height:145px;border:1px dashed #dcb9f5a8;border-radius:16px;background:linear-gradient(135deg,#39264f,#1b1b35);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;color:#e9d7ff;font:14px Arial,sans-serif}
+.media b{font-size:30px;margin-bottom:8px}
+.media.wide{grid-column:1/-1;min-height:190px}
+.note{font-style:italic;color:#f8d8ef}
+.progress{display:flex;justify-content:center;gap:8px;margin:18px}.dot{width:7px;height:7px;border-radius:50%;background:#685a83}.dot.active{background:#ffe6a6;box-shadow:0 0 12px #ffe6a6}
+#nameStars{width:min(900px,95vw);height:340px;display:block;margin:10px auto}
+.finaldoor{width:min(280px,80vw);height:360px}
+.count{font:clamp(2rem,7vw,4.5rem) Arial,sans-serif;color:#ffe5a6;text-shadow:0 0 25px #ffd77c;letter-spacing:3px;margin:20px 0}
+textarea{width:100%;min-height:140px;border-radius:15px;padding:16px;background:#ffffff0d;color:#fff;border:1px solid #d8b6ff88;font:16px Arial;resize:vertical}
+@media(max-width:550px){.media-grid{grid-template-columns:1fr}.media.wide{grid-column:auto}.door-wrap{height:370px}.room{padding:17px}#nameStars{height:250px}}
+
+/* CREATIVE THEME: midnight art-lab / neon scrapbook */
+:root{
+ --pink:#ff42c8;--gold:#ffe51f;--violet:#8b7cff;
+ --cyan:#22e6f2;--ink:#07070d;
+}
+body{background:#050509;color:#fff}
+#gouga-art-bg{
+ opacity:.13;filter:saturate(1.15) contrast(1.08);
+ mix-blend-mode:screen;transform:translate(-50%,-50%) rotate(-5deg) scale(1.04)
+}
+#sky{
+ background:
+ radial-gradient(circle at 8% 78%,#ff27b733 0,transparent 24%),
+ radial-gradient(circle at 92% 18%,#11d9ed33 0,transparent 26%),
+ radial-gradient(ellipse at 50% 100%,#6a2d9a66 0,transparent 54%),
+ linear-gradient(145deg,#050509f5,#090b18f2 58%,#16091af5)
+}
+main:before{
+ content:"";position:fixed;inset:18px;border:1px solid #ffe51f33;
+ border-radius:28px;pointer-events:none;z-index:-1;
+ box-shadow:inset 0 0 50px #12d9ef0b,0 0 35px #ff32c50a
+}
+.scene{position:relative}
+.scene:before,.scene:after{
+ content:"✦";position:absolute;color:#ffe51f;font-size:22px;
+ text-shadow:0 0 14px #ffe51f;pointer-events:none;animation:floaty 4s ease-in-out infinite
+}
+.scene:before{left:2%;top:8%}
+.scene:after{content:"✧";right:3%;bottom:7%;color:#22e6f2;text-shadow:0 0 14px #22e6f2;animation-delay:1.4s}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0);opacity:.55}50%{transform:translateY(-13px) rotate(18deg);opacity:1}}
+h1{
+ color:#fff;text-shadow:3px 3px 0 #ff35bd,-3px -2px 0 #12dff0,0 0 30px #ffe51f66;
+ letter-spacing:1px
+}
+h2{color:#ffe95b;text-shadow:0 0 18px #ff37c866}
+.small{color:#39e7f2;letter-spacing:5px}
+p{color:#eee8ff}
+.room{
+ position:relative;overflow:hidden;border:1px solid #22e6f277;border-radius:10px 28px 10px 28px;
+ background:linear-gradient(135deg,#111523f2,#171020f2 55%,#21102af2);
+ box-shadow:8px 8px 0 #ff35bd2b,0 0 35px #16d9ee24,inset 0 0 40px #ffe51f0a
+}
+.room:before{
+ content:"";position:absolute;left:-45px;top:18px;width:150px;height:5px;
+ background:#ffe51f;transform:rotate(-35deg);box-shadow:0 12px 0 #22e6f2,0 24px 0 #ff35bd
+}
+.media{
+ border:1px solid #22e6f266;border-radius:8px 20px 8px 20px;
+ background:linear-gradient(145deg,#122b36,#1d1530 70%,#32132e);
+ box-shadow:inset 0 0 25px #22e6f20c,0 7px 18px #0008;
+ transition:transform .25s,border-color .25s,box-shadow .25s
+}
+.media:nth-child(2n){border-color:#ff42c877;transform:rotate(1deg)}
+.media:nth-child(odd){transform:rotate(-.7deg)}
+.media:hover{transform:translateY(-5px) rotate(0);border-color:#ffe51f;box-shadow:0 0 22px #ffe51f33}
+.media b{filter:drop-shadow(0 0 8px #22e6f2)}
+button{
+ border:1px solid #ffe51f;background:linear-gradient(110deg,#087e91,#7333a2 52%,#b52a83);
+ border-radius:9px 24px 9px 24px;letter-spacing:.3px;
+ box-shadow:4px 4px 0 #ff42c855,0 0 22px #22e6f233;
+ transition:transform .2s,filter .2s
+}
+button:hover{transform:translateY(-3px) scale(1.025);filter:brightness(1.18)}
+button.secondary{background:#111827;border-color:#22e6f2}
+.door-wrap{filter:drop-shadow(0 0 25px #22e6f233)}
+.door{
+ border:2px solid #ffe51f;border-radius:7px 25px 7px 25px;
+ background:
+ radial-gradient(circle at 50% 45%,#22e6f233,transparent 35%),
+ linear-gradient(145deg,#063e48,#101326 52%,#551347);
+ box-shadow:0 0 0 7px #ff42c81a,0 0 0 13px #22e6f211,0 0 45px #ff42c855,inset 0 0 50px #22e6f222
+}
+.door:before{border:1px dashed #22e6f2;border-radius:4px 20px 4px 20px}
+.door-symbol{color:#ffe51f;text-shadow:0 0 12px #ffe51f,0 0 30px #22e6f2}
+.door-title{color:#fff;text-shadow:2px 2px 0 #ff42c8,0 0 15px #22e6f2}
+.door-knob{background:#22e6f2;box-shadow:0 0 14px #22e6f2}
+.dot{background:#51445f}
+.dot.active{background:#ffe51f;box-shadow:0 0 12px #ffe51f}
+textarea{
+ border:1px solid #22e6f2;background:#080d18;color:#fff;
+ border-radius:8px 22px 8px 22px;box-shadow:inset 0 0 25px #22e6f20d
+}
+.count{color:#ffe51f;text-shadow:2px 2px 0 #ff42c8,0 0 25px #ffe51f}
+.note{color:#ffb8e8}
+@media(max-width:550px){
+ main:before{inset:8px;border-radius:18px}
+ .scene:before{left:0;top:2%}.scene:after{right:0;bottom:2%}
+}
+
+
+.intro-art-wrap{
+ width:min(390px,82vw);aspect-ratio:1;margin:18px auto 20px;
+ position:relative;border-radius:50%;padding:5px;
+ background:conic-gradient(from 20deg,#ffe51f,#22e6f2,#ff42c8,#ffe51f);
+ box-shadow:0 0 18px #ffe51f66,0 0 42px #22e6f244,0 0 65px #ff42c833;
+ animation:introFloat 5s ease-in-out infinite
+}
+.intro-art-wrap:before{
+ content:"";position:absolute;inset:-9px;border:1px dashed #22e6f2aa;border-radius:50%;
+ animation:orbit 18s linear infinite
+}
+.intro-art{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+@keyframes introFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+#welcome h1{margin-top:8px}
+@media(max-width:550px){.intro-art-wrap{width:min(330px,78vw);margin:14px auto}}
+
+
+.memory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}
+.memory-card{min-width:0;border:1px solid #22e6f277;border-radius:12px 22px 12px 22px;padding:10px;background:linear-gradient(145deg,#101a28,#24132b);box-shadow:0 8px 22px #0008;overflow:hidden}
+.memory-card:nth-child(2n){border-color:#ff42c877}
+.memory-card img{display:block;width:100%;height:310px;object-fit:contain;background:#080910;border-radius:8px}
+.memory-card video{display:block;width:100%;max-height:390px;background:#000;border-radius:8px}
+.memory-card strong{display:block;color:#ffe95b;font:600 13px Arial,sans-serif;margin:9px 2px 3px}
+.memory-card small{display:block;color:#c9c4da;font:11px Arial,sans-serif;margin:0 2px 3px}
+.memory-grid .wide{grid-column:1/-1}
+.memory-grid .wide img{height:420px}
+@media(max-width:550px){.memory-grid{grid-template-columns:1fr}.memory-grid .wide{grid-column:auto}.memory-card img{height:360px}.memory-grid .wide img{height:360px}}
+
+
+
+/* FULL-SCREEN GOUGA constellation reveal */
+#nameScene{
+ position:fixed!important;inset:0!important;z-index:100!important;
+ width:100vw!important;height:100dvh!important;min-height:100dvh!important;
+ margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ overflow:hidden;background:
+ radial-gradient(ellipse at 50% 48%,#57206f 0%,#24104a 27%,#100b22 56%,#050509 82%);
+}
+#nameScene:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:
+ radial-gradient(ellipse at 50% 50%,#ff3bc54d 0%,#ff3bc51c 24%,transparent 58%),
+ radial-gradient(circle at 18% 25%,#22e6f244,transparent 38%),
+ radial-gradient(circle at 82% 78%,#ffe51f35,transparent 36%),
+ radial-gradient(circle at 78% 18%,#a44dff33,transparent 34%);
+ filter:blur(9px);
+ animation:universeBreath 3.8s ease-in-out infinite alternate;
+}
+@keyframes universeBreath{from{opacity:.45;transform:scale(.96)}to{opacity:1;transform:scale(1.08)}}
+#nameStars{position:absolute;inset:0;width:100%;height:100%;display:block;margin:0;z-index:1}
+.name-intro,.name-caption{
+ position:absolute;z-index:2;text-align:center;width:90%;left:5%;
+ color:#fff7ff;letter-spacing:2px;text-shadow:0 0 10px #fff,0 0 22px #ff42c8,0 0 42px #22e6f2,0 0 62px #a44dff;
+ font:clamp(13px,2.4vw,20px) Arial,sans-serif;transition:opacity 1.2s ease,transform 1.2s ease;
+}
+.name-intro{top:9%;animation:captionFloat 3s ease-in-out infinite}
+.name-caption{bottom:13%;opacity:0;transform:translateY(14px);letter-spacing:3px}
+.name-caption.visible{opacity:1;transform:translateY(0)}
+@keyframes captionFloat{50%{transform:translateY(-7px)}}
+.last-star-button{position:absolute!important;z-index:3;bottom:5%;opacity:0;pointer-events:none;transform:translateY(18px);transition:all 1s ease}
+.last-star-button.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+#nameScene button{box-shadow:0 0 18px #ff42c8cc,0 0 35px #22e6f299,0 0 55px #a44dff77}
+.name-caption{font-weight:800;font-size:clamp(17px,3.5vw,29px);letter-spacing:1.2px;color:#fff;text-shadow:0 0 8px #fff,0 0 18px #ff42c8,0 0 34px #22e6f2,0 0 52px #ffe51f}
+@media(max-width:600px){.name-intro{top:12%}.name-caption{bottom:15%;padding:0 12px}}
+
+
+/* FINAL COSMIC CHAPTER */
+#nameScene{isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#17103a99 0%,#08071355 48%,#03030aee 100%)}
+#nameScene:before,#nameScene:after{content:"";position:absolute;inset:-35%;z-index:0;pointer-events:none;filter:blur(34px);opacity:.55;mix-blend-mode:screen}
+#nameScene:before{background:conic-gradient(from 20deg at 45% 50%,transparent 0 18%,#ff35c044 24%,transparent 32%,#19dff044 45%,transparent 56%,#9b55ff55 70%,transparent 82%);animation:nebulaDrift 18s linear infinite}
+#nameScene:after{background:conic-gradient(from 190deg at 55% 50%,transparent 0 20%,#ffdc4140 28%,transparent 38%,#21cfff44 53%,transparent 64%,#ff3bb744 77%,transparent 88%);animation:nebulaDrift 25s linear infinite reverse}
+@keyframes nebulaDrift{to{transform:rotate(360deg) scale(1.08)}}
+#nameStars{position:relative;z-index:1;width:100%;height:min(62vh,560px);margin:0 auto;display:block}
+#nameScene .name-intro,#nameScene .name-caption,#nameScene button{z-index:3}
+.name-caption{bottom:12%;max-width:900px;left:50%;transform:translate(-50%,14px);font-size:clamp(16px,3.2vw,27px);line-height:1.5}
+.name-caption.visible{transform:translate(-50%,0)}
+.finaldoor{position:relative;isolation:isolate;border-radius:50%;width:min(310px,78vw);height:min(310px,78vw);margin:25px auto 30px;display:grid;place-items:center}
+.finaldoor:before,.finaldoor:after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid transparent;border-top-color:#ffe45e;border-right-color:#ff42c8;box-shadow:0 0 22px #ff42c888,inset 0 0 20px #22e6f255;animation:portalSpin 7s linear infinite}
+.finaldoor:after{inset:-27px;border-width:1px;border-left-color:#22e6f2;border-bottom-color:#a78bfa;animation-duration:11s;animation-direction:reverse}
+@keyframes portalSpin{to{transform:rotate(360deg)}}
+.finaldoor .door{width:76%;height:86%;border-radius:48% 48% 18px 18px;background:radial-gradient(circle at 50% 35%,#ffe68a55,#8c38c955 35%,#071327 72%);border:2px solid #ffe66b;box-shadow:0 0 30px #ffe45e99,0 0 70px #a44dff77,inset 0 0 30px #22e6f277;transform-origin:center}
+.finaldoor .door.open{transform:perspective(900px) rotateY(68deg) scale(1.25);filter:brightness(2)}
+.finaldoor .door-symbol{font-size:clamp(28px,7vw,46px);padding-top:60px;text-shadow:0 0 18px #ffe45e}
+.finaldoor .door-title{font-size:clamp(12px,3vw,17px);letter-spacing:2px}
+#finalDoorScene{background:radial-gradient(ellipse at center,#201044 0%,#080713 48%,#030309 100%)}
+#ending{background:radial-gradient(ellipse at 50% 15%,#332052 0%,#0a0a18 55%,#030309 100%)}
+#ending .room{max-width:900px;margin:24px auto;padding:clamp(18px,4vw,34px);border:1px solid #ffe45e66;background:#090b18dd;box-shadow:0 0 35px #a44dff33}
+#ending .letter{white-space:pre-wrap;text-align:left;font:clamp(14px,2.1vw,17px)/1.85 Arial,sans-serif;color:#fff2f8}
+#ending h1{text-shadow:0 0 18px #ff42c8,0 0 40px #22e6f2}
+.portal-hint{color:#d7cbff;letter-spacing:2px;font:12px Arial,sans-serif}
+@media(max-width:550px){#nameStars{height:56vh}.finaldoor{width:250px;height:250px}.finaldoor .door-symbol{padding-top:40px}}
+
+/* Keep the constellation scene hidden until the last memory door is closed. */
+#nameScene.hidden{display:none!important}
+</style>
+
+</head>
+<body><img id="gouga-art-bg" alt="" src="assets/16b7c742beff.png"><div id="sky"></div><main>
+<section class="scene" id="welcome"><div class="small">A little universe made for you</div><div class="intro-art-wrap"><img class="intro-art" src="assets/16b7c742beff.png" alt="Gouga artwork"></div><h1>Gouga ✨</h1><p>Kol beb yetsalla7… w kol mara tal9a 3alam sghir fih souvenir, taswira, vidéo w kelma men 9albi.</p><p class="note">Ready to open our memories?</p><button onclick="start()">Nabdew الرحلة ✨</button></section>
+
+<section class="scene hidden" id="doorScene"><div class="small" id="counter">DOOR 1 / 5</div><h2 id="doorHeading">The Memory Door</h2><div class="progress" id="progress"></div>
+<div class="door-wrap"><div class="door" id="door"><div class="door-symbol" id="doorIcon">✧</div><div class="door-title" id="doorLabel">Souvenirs</div><div class="door-knob"></div></div></div>
+<p id="doorHint">Efta7 el beb…</p><button id="doorAction" onclick="doorAction()">Efta7 el beb ✨</button></section>
+
+<section class="scene hidden" id="roomScene"><div class="small" id="roomCount">A MEMORY ROOM</div><h2 id="roomTitle">Our memories</h2><p id="roomIntro">Houni bech nal9aw barcha 7ajet 3zaz 3lina.</p>
+<div class="room"><div class="media-grid" id="mediaGrid"></div><p class="note" id="roomNote">Every little moment deserves its own place. 🤍</p></div>
+<button onclick="closeRoom()">Nsakker el beb w nemchi lel ba3dou 🌙</button></section>
+
+<section class="scene hidden" id="nameScene"><div class="name-intro">Close your eyes… the universe has something to show you ✨</div><canvas id="nameStars"></canvas><div class="name-caption" id="nameCaption">Gouga, 7ob 7yety w benty lmezyena ❤️</div><button class="last-star-button" id="lastStarButton" onclick="showFinal()">The last door… ✨</button></section>
+
+<section class="scene hidden" id="finalDoorScene"><div class="small">ONE LAST DOOR</div><h2>For the girl who makes the universe brighter</h2><p class="portal-hint">A portal to our next chapter… ♾️</p><div class="door-wrap finaldoor"><div class="door" id="finalDoor"><div class="door-symbol">2027 ✨</div><div class="door-title">A new beginning</div><div class="door-knob"></div></div></div><button onclick="openFinal()">Open our 2027 ✨</button></section>
+
+<section class="scene hidden" id="ending"><div class="small">A new chapter begins</div><h1>Happy New Year<br>Gouga 🤍</h1><div class="count" id="countdown">Loading…</div><p id="countLabel">Until 1 January 2027 · Tunisia time</p><div class="room"><h2>A message from me to you 💌</h2><p class="portal-hint">A little piece of our story, saved for 2027 ♾️</p><div class="letter">New year , akther mn 500 youm m3a b3a4na 🥹 mzlna 500 o5ra w noslou l dinar youm 🤦🏻‍♂️😂 dou3eba masta dzl 🙃
+Lmhm , net4aker 3amloul ki b3athlek mssg nos lyl sne nab3thlk fi des sites lik enty khw 🥹❤️ tet4akri wa9t kont nmotivi fik b 9isset tele commande w coupe angle w lklassst 🤦🏻‍♂️😂wa9t kont nfi9 lfajr nekteblk mssg de motivation 🥹❤️ 3em t3arekna fih barcha  🥺 mais imp neb3dou 3la b3a4na ❤️‍🩹 3em t3allemna mnou barcha 7ajet ✨️ 2027 bech n3ichou l far7a 🥹🧡 nhar ba3d nhar mechin l objectif ta3na 🇩🇪 b 4o7k w la3b , b les moments s3ab bl bhy w l5ayb li 3echneh 🥹❤️‍🩹 l7elma 9a3da tekber nhar ba3d nhar ♾️ l bmw ☠️ w soura bl bouquet ta3 l ward 🤦🏻‍♂️❤️ w skin care w les projets ...🥹 gouga 3chiret 3omri w katkoutty 🥰 gouga 7ob 7yety w benty 🥺✨️ invitation fi facebook kenet sbab bech tabda 9essa imp tet3awd 🥹 9essa 9a3din nektbou fi kol kemla mnha b barcha ta47iyet mais barcha thi9a w barcha 3azima w barcha 7ob ❤️ ...
+L7asilouta , ena far7an barcha elli bech nabda 3em jdid m3k kima 3amloul 🥹❤️ nchllh 3emin wella max 3 snin nabdou 3em jdid fi blasa b3ida 🥹🇩🇪 ena heka l but te3y
+L contract mta3na mayoufech 😝🥰 m3kk a vie w 7atta l mamet ♾️
+( fekret blacelet fih 3lamet ♾️ ch9awlek hh)</div></div></section>
+</main>
+<script>
+const sky=document.getElementById('sky');for(let i=0;i<100;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';sky.appendChild(s)}
+const mediaAssets = {"images": {"chat_long": "assets/55247d82f509.jpg", "chat_yellow_1": "assets/c4afb031c29a.jpg", "chat_yellow_2": "assets/1a8bdf195c7a.jpg", "chat_green": "assets/8399a12cac20.jpg", "chat_line": "assets/997a3cae56d8.jpg", "chat_long_2": "assets/35c69d399fbb.jpg", "chat_long_3": "assets/8f3908771879.jpg", "call": "assets/93d51c41b3a1.jpg", "chat_love": "assets/ae70af40c285.jpg", "chat_detail": "assets/3d5b356577bc.jpg"}, "videos": {"clip1": "assets/5b30f59788ed.mp4", "clip2": "assets/976826e1b6d5.mp4", "clip3": "assets/67034bdac2aa.mp4"}, "new_images": {first_road:'assets/f498e49cafa7.jpg',dreams:'assets/87f97e0aa44e.png',chat_new:'assets/1e5a53f011bc.jpg',memory_new:'assets/8e04ed4ed1dc.jpg'}, "new_videos": {new_clip_1:'assets/2f64458cef46.mp4',new_clip_2:'assets/5b30f59788ed.mp4',new_clip_3:'assets/976826e1b6d5.mp4',new_clip_4:'assets/964ffe77d858.mp4',new_clip_5:'assets/7ba7a4648392.mp4'}, "song": 'assets/126d9ef219e0.mp3', "voice": 'assets/8bbbdd828008.ogg'};
+
+const doors=[
+{title:'The Memory Door',icon:'✧',label:'Our little memories',intro:'Kol screenshot fih kelma, fih wa9t, fih dhikra…',note:'Kol wa7da menhom 3andha blasteha houni ❤️',items:[
+['img','chat_long','A long message','A message saved from your conversations'],
+['img','chat_yellow_1','A little conversation','One of the moments you shared'],
+['img','chat_yellow_2','Another page of the story','A memory worth keeping'],
+['img','chat_green','Words to remember','A little chat moment']
+]},
+{title:'The Cinema Door',icon:'✦',label:'Our little cinema',intro:'Taw les moments yet7arkou… Play w 3ich el dhikra.',note:'Three video moments, together in one private cinema 🎬',items:[
+['vid','clip1','Video memory 01','A clip you shared'],
+['vid','clip2','Video memory 02','A little moment in motion'],
+['vid','clip3','Video memory 03','Another piece of the story']
+]},
+{title:'The Secret Door',icon:'☾',label:'Little details & secrets',intro:'Famma kelmet sghar ama ykhalyou sourire yji wa7dou.',note:'A few more little messages and details from your screenshots ✨',items:[
+['img','chat_line','A tiny message','One short line, a big feeling'],
+['img','chat_love','A sweet little word','A message that says a lot'],
+['img','chat_detail','A chat detail','A small moment from your conversation'],
+['img','call','A long call','A memory from a call together']
+]},
+{title:'The Letter Door',icon:'❖',label:'Words from the heart',intro:'Some words deserve a quiet place of their own.',note:'The final personal letter stays empty until you give me your own words.',items:[
+['img','chat_long_2','A long conversation','A page from your shared story'],
+['img','chat_long_3','Another long message','A memory preserved as it was']
+]},
+{title:'The Wish Door',icon:'☆',label:'A thousand wishes',intro:'Nchallah el jey ykoun a7la, akther far7a w akther dhikrayet behya.',note:'The last wishes and the New Year surprise are waiting under the stars 🌟',items:[
+['text','🌙','A wish for you','May your days be gentle and full of joy'],
+['text','⭐','A wish for your dreams','May every effort bring you closer to what you hope for'],
+['text','🎆','A new beginning','01 · 01 · 2027']
+]},
+{title:'The First Road & Cinema Door',icon:'✦',label:'The road where our story began',intro:'Awel tri9 mchit fiha m3ak… awel rencontre. Houni bdet dhikra ma tet3awedch. 🥹❤️',note:'Some roads are not just roads. They become the beginning of a story.',items:[
+['img','first_road','The first road','Awel rencontre… date kept secret ❤️'],
+['img','dreams','Our dreams','The future we keep imagining together'],
+['img','chat_new','A message to remember','A little page from your story'],
+['img','memory_new','Another little memory','Saved here, just for you'],
+['vid','new_clip_1','Video memory 01','A moment in motion'],
+['vid','new_clip_2','Video memory 02','A memory from your collection'],
+['vid','new_clip_3','Video memory 03','Another piece of your story'],
+['vid','new_clip_4','Video memory 04','A little moment to replay'],
+['vid','new_clip_5','Video memory 05','One more memory to keep'],
+['voice','voice','A voice from our memories','The voice that believed in you']
+]},];let idx=0,opened=false,busy=false;
+function show(id){document.querySelectorAll('.scene').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden')}
+function start(){show('doorScene');prepareDoor()}
+window.start=start;
+function prepareDoor(){opened=false;busy=false;document.getElementById('door').className='door';document.getElementById('counter').textContent=`DOOR ${idx+1} / ${doors.length}`;document.getElementById('doorHeading').textContent=doors[idx].title;document.getElementById('doorIcon').textContent=doors[idx].icon;document.getElementById('doorLabel').textContent=doors[idx].label;document.getElementById('doorHint').textContent='Efta7 el beb…';document.getElementById('doorAction').textContent='Efta7 el beb ✨';document.getElementById('progress').innerHTML=doors.map((d,i)=>`<i class="dot ${i<=idx?'active':''}"></i>`).join('')}
+function doorAction(){if(busy)return;let d=doors[idx];if(!opened){opened=true;document.getElementById('door').classList.add('open');document.getElementById('doorHint').textContent='El beb t7al… d5ol l 3alem mte3na ✨';document.getElementById('doorAction').textContent='D5ol lel 3alem 🤍';setTimeout(()=>{if(opened)showRoom()},700)}else{closeRoom()}}
+
+function showRoom(){
+ let d=doors[idx];
+ document.getElementById('roomCount').textContent=`ROOM ${idx+1} / ${doors.length}`;
+ document.getElementById('roomTitle').textContent=d.label;
+ document.getElementById('roomIntro').textContent=d.intro;
+ document.getElementById('roomNote').textContent=d.note;
+ const grid=document.getElementById('mediaGrid');
+ grid.className='memory-grid';
+ grid.innerHTML=d.items.map((item,i)=>{
+   const [type,key,title,desc]=item;
+   if(type==='img'){
+     return `<article class="memory-card ${i===0?'wide':''}">
+       <img src="${mediaAssets.images[key]||mediaAssets.new_images[key]}" alt="${title}" loading="lazy">
+       <strong>${title}</strong><small>${desc}</small></article>`;
+   }
+   if(type==='vid'){
+     return `<article class="memory-card ${i===0?'wide':''}">
+       <video controls playsinline preload="metadata" src="${mediaAssets.videos[key]||mediaAssets.new_videos[key]}"></video>
+       <strong>${title}</strong><small>${desc}</small></article>`;
+   }
+   if(type==='voice'){
+     return `<article class="memory-card wide" style="text-align:center">
+       <div style="font-size:54px;padding:18px">🎙️</div>
+       <strong>${title}</strong><small>${desc}</small>
+       <p style="font-style:italic">“Do you remember the voice that motivated you?”</p>
+       <audio controls preload="metadata" style="width:100%" src="${mediaAssets.voice}"></audio>
+       <small>Original voice recording · play when you're ready ❤️</small></article>`;
+   }
+   return `<article class="memory-card"><div style="min-height:170px;display:grid;place-items:center;font-size:52px;color:#ffe95b">${type==='text'?key:'✦'}</div><strong>${title}</strong><small>${desc}</small></article>`;
+ }).join('');
+ show('roomScene');
+}
+function closeRoom(){if(busy)return;busy=true;show('doorScene');document.getElementById('door').classList.remove('open');document.getElementById('door').classList.add('closing');setTimeout(()=>{idx++;if(idx<doors.length)prepareDoor();else{show('nameScene');drawName()}busy=false},850)}
+function drawName(){
+ const canvas=document.getElementById('nameStars'),ctx=canvas.getContext('2d');
+ const intro=document.querySelector('.name-intro'),caption=document.getElementById('nameCaption'),button=document.getElementById('lastStarButton');
+ const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let W=0,H=0,dpr=1,particles=[],ambient=[],start=0,raf=0,phase=-1,resizeHandler=null;
+ function sampleText(text,fontSize,y){
+  const off=document.createElement('canvas');off.width=Math.floor(W);off.height=Math.floor(H);
+  const o=off.getContext('2d');o.font=`900 ${fontSize}px Georgia,serif`;o.textAlign='center';o.textBaseline='middle';
+  o.fillStyle='#fff';o.fillText(text,W/2,y, W*.94);
+  const data=o.getImageData(0,0,W,H).data,pts=[],step=Math.max(2,Math.floor(W/310));
+  for(let yy=0;yy<H;yy+=step)for(let xx=0;xx<W;xx+=step)if(data[(yy*W+xx)*4+3]>100)pts.push({x:xx,y:yy});
+  return pts;
+ }
+ function setup(){
+  dpr=Math.min(window.devicePixelRatio||1,2);W=window.innerWidth;H=canvas.clientHeight||Math.min(innerHeight*.62,560);
+  canvas.width=Math.floor(W*dpr);canvas.height=Math.floor(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  const nameSize=Math.min(W*.205,H*.42,220);
+  const phraseSize=Math.min(W*.052,H*.105,38);
+  const namePts=sampleText('GOUGA',nameSize,H*.43);
+  const phrasePts=sampleText('Gouga 7ob 7yety w benty lmezyema',phraseSize,H*.49);
+  particles=namePts.map((p,i)=>({x:Math.random()*W,y:Math.random()*H,tx:p.x,ty:p.y,delay:Math.random()*.65+(p.x/W)*.12,phase:Math.random()*6.28,size:.7+Math.random()*1.5,hue:[48,185,310,270][i%4],group:0}));
+  particles=particles.concat(phrasePts.map((p,i)=>({x:Math.random()*W,y:Math.random()*H,tx:p.x,ty:p.y,delay:Math.random()*.8+(p.x/W)*.12,phase:Math.random()*6.28,size:.65+Math.random()*1.2,hue:[48,185,310,270][i%4],group:1})));
+  ambient=Array.from({length:Math.min(260,Math.floor(W*H/4200))},()=>({x:Math.random()*W,y:Math.random()*H,r:.35+Math.random()*1.3,a:.15+Math.random()*.55,p:Math.random()*6.28}));
+ }
+ function frame(now){
+  if(!start)start=now;const elapsed=(now-start)/1000;ctx.clearRect(0,0,W,H);
+  for(const a of ambient){const tw=.45+.55*Math.sin(now*.001+a.p);ctx.fillStyle=`rgba(220,225,255,${a.a*tw})`;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill()}
+  const secondStart=reduceMotion?0:7.2, duration=reduceMotion?0:4.8;
+  const activeGroup=elapsed<secondStart?0:1;
+  if(phase!==activeGroup){phase=activeGroup;caption.textContent=activeGroup===0?'GOUGA':'Gouga 7ob 7yety w benty lmezyema ❤️';caption.classList.remove('visible')}
+  for(const p of particles){
+   if(p.group!==activeGroup)continue;
+   const local=activeGroup===0?elapsed:elapsed-secondStart;
+   const t=Math.max(0,Math.min(1,(local-p.delay)/Math.max(.01,duration-p.delay)));
+   const ease=1-Math.pow(1-t,3),x=p.x+(p.tx-p.x)*ease,y=p.y+(p.ty-p.y)*ease;
+   const tw=.65+.35*Math.sin(now*.003+p.phase),alpha=.2+.8*ease;
+   if(t<.98){ctx.save();ctx.globalCompositeOperation='screen';ctx.globalAlpha=(1-t)*.38;ctx.strokeStyle=`hsla(${p.hue},100%,68%,.7)`;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-(p.tx-p.x)*.035,y-(p.ty-p.y)*.035);ctx.stroke();ctx.restore()}
+   ctx.save();ctx.globalAlpha=alpha*tw;ctx.shadowBlur= t>.88?12:5;ctx.shadowColor=`hsl(${p.hue} 100% 70%)`;ctx.fillStyle=`hsl(${p.hue} 100% ${72+tw*18}%)`;ctx.beginPath();ctx.arc(x,y,p.size*(.7+tw*.45),0,Math.PI*2);ctx.fill();
+   if(p.size>1.5&&tw>.91){ctx.globalAlpha=alpha*.8;ctx.fillRect(x-4,y-.45,8,.9);ctx.fillRect(x-.45,y-4,.9,8)}ctx.restore();
+  }
+  // Moving, multi-colour nebula ribbons instead of a plain white sweep.
+  ctx.save();ctx.globalCompositeOperation='screen';
+  for(let k=0;k<4;k++){const y=H*(.22+k*.17)+Math.sin(now*.00045+k*2)*H*.07;const g=ctx.createLinearGradient(0,y-40,W,y+40);g.addColorStop(0,'rgba(255,50,190,0)');g.addColorStop(.32,`hsla(${300+k*55},100%,65%,.10)`);g.addColorStop(.65,`hsla(${185+k*40},100%,65%,.12)`);g.addColorStop(1,'rgba(255,220,80,0)');ctx.strokeStyle=g;ctx.lineWidth=18+8*Math.sin(now*.001+k);ctx.beginPath();for(let x=0;x<=W;x+=12){const yy=y+Math.sin(x*.009+now*.0008+k)*18; if(x===0)ctx.moveTo(x,yy);else ctx.lineTo(x,yy)}ctx.stroke()}
+  ctx.restore();
+  if(elapsed>6.4&&elapsed<7.15){caption.classList.add('visible');intro.style.opacity='0';intro.style.transform='translateY(-12px)'}
+  if(elapsed>12.4){caption.classList.add('visible');button.classList.add('visible');intro.style.opacity='0';intro.style.transform='translateY(-12px)'}
+  raf=requestAnimationFrame(frame);
+ }
+ setup();cancelAnimationFrame(raf);start=0;phase=-1;caption.classList.remove('visible');button.classList.remove('visible');intro.style.opacity='1';intro.style.transform='';
+ raf=requestAnimationFrame(frame);
+ resizeHandler=()=>{cancelAnimationFrame(raf);setup();start=performance.now()-1000;raf=requestAnimationFrame(frame)};
+ window.addEventListener('resize',resizeHandler,{once:true});
+}
+function showFinal(){show('finalDoorScene')}
+function openFinal(){document.getElementById('finalDoor').classList.add('open');setTimeout(()=>{show('ending');tick()},1100)}
+function tick(){let target=new Date('2027-01-01T00:00:00+01:00');function update(){let diff=target-new Date(),el=document.getElementById('countdown');if(diff<=0){el.textContent='2027 ✨';document.getElementById('countLabel').textContent='Happy New Year, Gouga! 🥹❤️';return}let days=Math.floor(diff/86400000),hours=Math.floor(diff%86400000/3600000),mins=Math.floor(diff%3600000/60000),secs=Math.floor(diff%60000/1000);el.textContent=`${days}d ${hours}h ${mins}m ${secs}s`;setTimeout(update,1000)}update()}
+</script>
+<style>
+#musicDock{position:fixed;z-index:200;right:14px;bottom:14px;display:flex;align-items:center;gap:9px;
+ padding:9px 12px;border:1px solid #22e6f2;border-radius:16px 7px 16px 7px;
+ background:#080d18ed;box-shadow:0 0 22px #22e6f255;backdrop-filter:blur(10px);font:12px Arial,sans-serif}
+#musicDock button{margin:0;padding:9px 13px;font-size:12px}
+#musicDock span{color:#ffe95b;max-width:130px}
+@media(max-width:480px){#musicDock{right:8px;bottom:8px;gap:5px;padding:7px}#musicDock span{max-width:90px;font-size:10px}}
+</style>
+<div id="musicDock"><span>🎵 Ja tebia liubliu</span><button type="button" id="musicToggle" onclick="toggleMainSong()">▶ Play</button><audio id="mainSong" preload="none" loop src="assets/126d9ef219e0.mp3"></audio></div>
+<script>
+function toggleMainSong(){
+ const a=document.getElementById('mainSong'),b=document.getElementById('musicToggle');
+ if(a.paused){a.play().then(()=>b.textContent='Ⅱ Pause').catch(()=>b.textContent='Tap to play');}
+ else{a.pause();b.textContent='▶ Play';}
+}
+</script>
+</body></html>
